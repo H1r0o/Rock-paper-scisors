@@ -54,7 +54,10 @@
     padding: 20px;
 }
 
-#button {
+
+#rock,
+#paper,
+#scissors {
     margin-top: 20px;
     width: 150px;
     height: 50px;
@@ -67,6 +70,9 @@
     cursor: pointer;
 }
 
-#button:hover {
+
+#rock:hover,
+#paper:hover,
+#scissors:hover {
     background-color: rgb(82, 135, 250);
 }

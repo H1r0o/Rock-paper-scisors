@@ -1,4 +1,7 @@
-let button = document.getElementById("button");
+// let button = document.getElementById("button");
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
 let playerChoiceText = document.getElementById("playerChoice");
 let playerScoreText = document.getElementById("playerScore");
 let computerChoiceText = document.getElementById("computerChoice");
@@ -8,34 +11,58 @@ let gameOver = false;
 let playerScore = 0;
 let computerScore = 0;
 
-button.addEventListener("click", () => {
+let buttons = document.querySelectorAll("button");
 
-    if (!gameOver) {
-        const playerCh = playerChoice();
-        const computerCh = computerChoice();
-        gameRound(playerCh, computerCh);
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if (!gameOver) {
+            let buttonText = button.innerText.toLocaleUpperCase();
+            let computer = computerChoice();
+            gameRound(buttonText, computer);
 
-        if (playerScore >= 5 || computerScore >= 5) {
-            gameOver = true;
-            button.innerText = "Restart Game";
-            whoWin.innerText = playerScore > computerScore ? "🎉 Player wins the game!" : "💻 Computer wins the game!";
+            if (playerScore >= 5 || computerScore >= 5) {
+                gameOver = true;
+                whoWin.innerText = playerScore > computerScore ? "🎉 Player wins the game!" : "💻 Computer wins the game!";
+                rockBtn.innerText = "Reset?";
+                paperBtn.innerText = "Reset?";
+                scissorsBtn.innerText = "Reset?";
+            }
+        } else {
+            resetGame();
         }
-    }
-    else {
-        resetGame();
-    }
-});
+    })
+})
+
+// button.addEventListener("click", () => {
+
+//     if (!gameOver) {
+//         const playerCh = playerChoice();
+//         const computerCh = computerChoice();
+//         gameRound(playerCh, computerCh);
+
+//         if (playerScore >= 5 || computerScore >= 5) {
+//             gameOver = true;
+//             button.innerText = "Restart Game";
+//             whoWin.innerText = playerScore > computerScore ? "🎉 Player wins the game!" : "💻 Computer wins the game!";
+//         }
+//     }
+//     else {
+//         resetGame();
+//     }
+// });
 
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
     gameOver = false;
-    button.innerText = "Play Round";
     playerScoreText.innerText = playerScore;
     computerScoreText.innerText = computerScore;
-    playerChoiceText.innerText = "Rock";
-    computerChoiceText.innerText = "Paper";
+    playerChoiceText.innerText = "ROCK";
+    computerChoiceText.innerText = "PAPER";
     whoWin.innerText = "Whos gona win?";
+    rockBtn.innerText = "Rock";
+    paperBtn.innerText = "Paper";
+    scissorsBtn.innerText = "Scissors";
 }
 
 function computerChoice() {
