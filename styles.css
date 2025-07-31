@@ -10,10 +10,12 @@
 }
 
 #score,
-#chioces {
+#chioces,
+#whoWin {
     display: flex;
     /* border: 5px solid rgba(0, 0, 0, 0.473); */
-    width: 500px;
+    width: 700px;
+    height: 100px;
     align-items: center;
     justify-content: center;
 }
@@ -28,6 +30,12 @@
 #chioces {
     border-radius: 0 0 20px 20px;
     border-width: 0 5px 5px 5px;
+    border-color: rgba(0, 0, 0, 0.473);
+    border-style: solid;
+}
+
+#whoWin {
+    border-width: 0 5px 0 5px;
     border-color: rgba(0, 0, 0, 0.473);
     border-style: solid;
 }
@@ -55,6 +63,7 @@
     color: antiquewhite;
     border-radius: 15px;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 #button:hover {
